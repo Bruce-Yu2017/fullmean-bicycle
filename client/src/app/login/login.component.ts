@@ -20,12 +20,23 @@ export class LoginComponent implements OnInit {
     email: "",
     password: "",
   }
+
+  err_message = {
+    email: "",
+    login: ""
+  }
   constructor(private _service: MainService, private _router: Router) { }
 
   register() {
     this._service.register(this.user_reg, (res) => {
-      console.log(res.json());
+      // console.log(res.json());
       console.log("register data sending route");
+      if(res === "success") {
+        this._router.navigate(['/browse']);
+      }
+      else {
+        this.err_message.email = "This email has been registered."
+      }
       this.user_reg = {
         first_name: "",
         last_name: "",
@@ -33,20 +44,23 @@ export class LoginComponent implements OnInit {
         password: "",
       };
     });
-    this._router.navigate(['/browse'])
+    
   }
 
   login() {
     this._service.login(this.user_login, 
       (res) => {
-        console.log("from service login: ", res.json());
-        console.log("login data sending route");
-        this.user_login = {
-          email: "",
-          password: ""
-        };
+        if(res.error == undefined) {
+          this._router.navigate(['/browse']);
+        }
+        else {
+          this.err_message.login = res.error;
+        }
       });
-    this._router.navigate(['/browse'])
+    this.user_login = {
+      email: "",
+      password: ""
+    };
   }
 
   ngOnInit() {

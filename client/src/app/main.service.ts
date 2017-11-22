@@ -10,7 +10,7 @@ export class MainService {
     this._http.post("/register", data).subscribe(
       (res) => {
         console.log("from service register: ", res.json());
-        callback(res);
+        callback(res.json());
         this.user = res.json();
         console.log(this.user);
     }, 
@@ -22,9 +22,13 @@ export class MainService {
   login(data, callback) {
     this._http.post("/login", data).subscribe(
       (res) => {
-        callback(res);
+        callback(res.json());
         this.user = res.json();
         console.log(this.user);
+        if(res.json().error == undefined){
+          this.user = res.json();
+          console.log(this.user);
+        }
       }, 
       (err) => {
         console.log("error from login service: ", err);
