@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Bicycle Marketplace</h1>
+        <div class="form-group">
+            print bike method
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <h2>Login</h2>
+        <form class="form-horizontal" (submit) = "login()">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="email">Email:</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" [(ngModel)]="user_login.email">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Password:</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" placeholder="Enter password" name="password" [(ngModel)]="user_login.password">
+                    <!-- <p style="color: red;">Invalid input</p> -->
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- register -->
+    <div class="container">
+        <h2>Registration</h2>
+        <form class="form-horizontal" (submit) = "register()">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="email">First name:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="email" placeholder="first name" name="first_name" [(ngModel)]="user_reg.first_name">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="email">Last name:</label>
+                <div class="col-sm-10">
+                    <input type="text" name="last_name" class="form-control" placeholder="last name" [(ngModel)]="user_reg.last_name">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2">Email:</label>
+                <div class="col-sm-10">
+                    <input type="text" name="email" class="form-control" placeholder="email" [(ngModel)]="user_reg.email">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2">Password:</label>
+                <div class="col-sm-10">
+                    <input type="text" name="password" class="form-control" placeholder="Enter password" name="password" [(ngModel)]="user_reg.password">
+                    <!-- <p style="color: red;">Invalid input</p> -->
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2">Password confirmation:</label>
+                <div class="col-sm-10">
+                    <input type="text" name="password_con" class="form-control" placeholder="Enter password confirmation" name="password_con" >
+                    <!-- <p style="color: red;">Invalid input</p> -->
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>
