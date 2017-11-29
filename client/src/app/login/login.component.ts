@@ -14,6 +14,10 @@ export class LoginComponent implements OnInit {
     password: ""
   }
 
+  bike:any;
+  password_confirm = {
+    con: ""
+  };
   user_reg = {
     first_name: "",
     last_name: "",
@@ -29,9 +33,8 @@ export class LoginComponent implements OnInit {
 
   register() {
     this._service.register(this.user_reg, (res) => {
-      // console.log(res.json());
-      console.log("register data sending route");
-      if(res === "success") {
+      console.log("from com register: ", this.user_reg);
+      if(res.success === "success") {
         this._router.navigate(['/browse']);
       }
       else {
@@ -43,6 +46,7 @@ export class LoginComponent implements OnInit {
         email: "",
         password: "",
       };
+      this.password_confirm = "";
     });
     
   }
@@ -64,6 +68,13 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this._service.retrieveAllBike(
+      (res) => {
+        console.log(res);
+        var index = Math.floor(Math.random() * res.length);
+        this.bike = res[index];
+        console.log(this.bike);
+      })
   }
 
 }
