@@ -46,7 +46,9 @@ export class LoginComponent implements OnInit {
         email: "",
         password: "",
       };
-      this.password_confirm = "";
+      this.password_confirm = {
+        con: ""
+      };
     });
     
   }

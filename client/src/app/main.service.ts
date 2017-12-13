@@ -3,12 +3,12 @@ import { Http } from '@angular/http';
 @Injectable()
 export class MainService {
   user;
- 
+  
   constructor(private _http: Http) {
     if(localStorage.user != undefined) {
       this.user = JSON.parse(localStorage.user);
     }
-   }
+  }
   
   register(user, callback) {
     console.log("from regi service: ", user);
@@ -21,10 +21,10 @@ export class MainService {
           localStorage.user = JSON.stringify(res.json().user);
           
         }
-    }, 
+      }, 
       (err) => {
         console.log(err);
-    })
+      })
   }
 
   login(data, callback) {
@@ -79,10 +79,10 @@ export class MainService {
       (res) => {
         console.log("from service searchitem: ", res);
         callback(res.json());
-    }, 
+      }, 
       (err) => {
         console.log("from service searchitem error: ", err);
-    })
+      })
   }
 
   retrMyBikes(callback) {
@@ -103,7 +103,7 @@ export class MainService {
         console.log("error from service update: ", err);
       })
   }
- 
+  
   deleteBike(id, callback) {
     console.log("delete mothod");
     this._http.delete("/bikes/" + id).subscribe(
